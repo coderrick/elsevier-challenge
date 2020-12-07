@@ -4,7 +4,7 @@
 </head>
 <body>
 	<h1>Safe Harbor De-Identification</h1>
-	<form action="/" method="post">
+	<form action="/deidentify" method="post">
 		<div class="container">
 			<label for="birthdate"><b>BirthDate</b></label>
 			<input type="text" placeholder="Enter BirthDate" name="birthdate" required>

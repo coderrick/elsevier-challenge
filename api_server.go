@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
@@ -20,11 +21,19 @@ func RenderForm(w http.ResponseWriter, r *http.Request) {
 func DeIndentify(w http.ResponseWriter, r *http.Request) {
 	//Get data from html login form
 	r.ParseForm()
-	fmt.Println("BirthDate:", r.Form["birthdate"])
-	fmt.Println("ZipCode:", r.Form["zipcode"])
-	fmt.Println("Admission Date:", r.Form["admissiondate"])
-	fmt.Println("Discharge Date:", r.Form["dischargedate"])
-	fmt.Println("Notes:", r.Form["notes"])
+	// a := Helper(r.Form["birthdate"])
+	// fmt.Println(a)
+	fmt.Println("BirthDate:", Helper(r.Form["birthdate"]))
+	fmt.Println("ZipCode:", Helper(r.Form["zipcode"]))
+	fmt.Println("Admission Date:", Helper(r.Form["admissiondate"]))
+	fmt.Println("Discharge Date:", Helper(r.Form["dischargedate"]))
+	fmt.Println("Notes:", Helper(r.Form["notes"]))
+}
+
+func Helper(data []string) string {
+	//convert from []string to string
+	res := strings.Join(data, " ")
+	return res
 }
 
 func main() {

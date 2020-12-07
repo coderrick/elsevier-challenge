@@ -10,7 +10,7 @@
 			<input type="text" placeholder="Enter BirthDate" name="birthdate" required>
 
 			<label for="psw"><b>ZipCode</b></label>
-			<input type="password" placeholder="Enter Zip code" name="zipcode" required>
+			<input type="text" placeholder="Enter Zip code" name="zipcode" required>
 
 			<label for="admissiondate"><b>Admission Date</b></label>
 			<input type="text" placeholder="Enter Admission Date" name="admissiondate" required>

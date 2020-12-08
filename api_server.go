@@ -1,9 +1,11 @@
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -64,6 +66,19 @@ func NotesHelper(data []string) string {
 	Str := "${1}XXX-XX-XXXX$2"
 	ssn := m.ReplaceAllString(d, Str)
 	return ssn
+}
+
+func ReadCSV(filename string) ([][]string, error) {
+	f, err := os.Open(filename)
+	if err != nil {
+		return [][]string{}, err
+	}
+	defer f.Close()
+	lines, err := csv.NewReader(f).ReadAll()
+	if err != nil {
+		return [][]string{}, err
+	}
+	return lines, nil
 }
 
 func main() {

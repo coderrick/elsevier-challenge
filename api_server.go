@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 	"text/template"
@@ -56,9 +57,13 @@ func DateHelper(data []string) string {
 	return d[0:4]
 }
 
+//Find and replace SSN
 func NotesHelper(data []string) string {
-	//TODO
-	return " "
+	d := strings.Join(data, " ")
+	m := regexp.MustCompile("...-..-....")
+	Str := "${1}XXX-XX-XXXX$2"
+	ssn := m.ReplaceAllString(d, Str)
+	return ssn
 }
 
 func main() {

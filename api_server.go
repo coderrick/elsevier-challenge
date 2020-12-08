@@ -47,17 +47,23 @@ func BirthDateHelper(data []string) string {
 
 func ZipCodeHelper(data []string) string {
 	//TODO
+	return " "
 }
 
+//Parse and truncate admission/discharge date form data
 func DateHelper(data []string) string {
-	//TODO
+	d := strings.Join(data, " ")
+	return d[0:4]
 }
 
 func NotesHelper(data []string) string {
 	//TODO
+	return " "
 }
 
 func main() {
+	a := "2019-03-12"
+	fmt.Println(a[0:4])
 	fmt.Println(time.Now().Format("2006-01-02"))
 	log.Print("Listening on Port 8080; http://localhost:8080")
 	http.HandleFunc("/", RenderForm) // setting router rule

@@ -30,6 +30,6 @@ func TestNotesHelper(t *testing.T) {
 	a := []string{"Patient with ssn 123-45-6789 previously presented under different ssn"}
 	result := NotesHelper(a)
 	if result != "Patient with ssn XXX-XX-XXXX previously presented under different ssn" {
-		t.Errorf("ZipCode was incorrect, got: %s, want: %s.", result, "Patient with ssn XXX-XX-XXXX previously presented under different ssn")
+		t.Errorf("Notes were incorrect, got: %s, want: %s.", result, "Patient with ssn XXX-XX-XXXX previously presented under different ssn")
 	}
 }

@@ -95,9 +95,6 @@ func ReadCSV(filename string) ([][]string, error) {
 }
 
 func main() {
-	a := "2019-03-12"
-	fmt.Println(a[0:4])
-	fmt.Println(time.Now().Format("2006-01-02"))
 	log.Print("Listening on Port 8080; http://localhost:8080")
 	http.HandleFunc("/", RenderForm) // setting router rule
 	http.HandleFunc("/deidentify", DeIndentify)

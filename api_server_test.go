@@ -17,3 +17,11 @@ func TestZipCodeHelper(t *testing.T) {
 		t.Errorf("ZipCode was incorrect, got: %s, want: %s.", result, "10000")
 	}
 }
+
+func TestDateHelper(t *testing.T) {
+	a := []string{"2019-03-12"}
+	result := DateHelper(a)
+	if result != "2019" {
+		t.Errorf("ZipCode was incorrect, got: %s, want: %s.", result, "2019")
+	}
+}

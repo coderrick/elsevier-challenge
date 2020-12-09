@@ -37,8 +37,8 @@ func DeIndentify(w http.ResponseWriter, r *http.Request) {
 //Parse birthdate form data
 func BirthDateHelper(data []string) string {
 	//convert from []string to string
-	bd := strings.Join(data, " ")
-	then, err := time.Parse("2006-01-02", bd)
+	d := strings.Join(data, " ")
+	then, err := time.Parse("2006-01-02", d)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -48,9 +48,21 @@ func BirthDateHelper(data []string) string {
 	return age
 }
 
+//Maps csv data to a map and calculates new zipcode
 func ZipCodeHelper(data []string) string {
-	//TODO
-	return " "
+	d := strings.Join(data, " ")
+	zcta := make(map[string]string)
+	lines, _ := ReadCSV("population_by_zcta_2010.csv")
+	//populate map with csv data
+	for _, line := range lines {
+		zcta[line[0]] = line[1]
+	}
+	population, _ := strconv.Atoi(zcta[d])
+	if population < 20000 {
+		return "00000"
+	} else {
+		return d[0:3] + "00"
+	}
 }
 
 //Parse and truncate admission/discharge date form data
@@ -68,6 +80,7 @@ func NotesHelper(data []string) string {
 	return ssn
 }
 
+//Read CSV file
 func ReadCSV(filename string) ([][]string, error) {
 	f, err := os.Open(filename)
 	if err != nil {
@@ -92,5 +105,4 @@ func main() {
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-
 }
